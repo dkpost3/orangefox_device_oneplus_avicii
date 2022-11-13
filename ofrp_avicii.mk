@@ -19,7 +19,8 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Release name
 PRODUCT_RELEASE_NAME := avicii
-PRODUCT_CODENAME := avicii
+TARGET_DEVICE_CODENAME := avicii
+TARGET_DEVICE := avicii
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := avicii
 PRODUCT_NAME := ofrp_avicii
