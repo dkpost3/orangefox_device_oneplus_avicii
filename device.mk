@@ -73,6 +73,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
+    android.hardware.fastboot@1.0-impl-mock.recovery \
     fastbootd
 
 # Soong namespaces
@@ -82,4 +83,15 @@ PRODUCT_SOONG_NAMESPACES += \
 # qcom ncryption
 PRODUCT_PACKAGES += \
     qcom_decrypt \
-    qcom_decrypt_fbe
+    qcom_decrypt_fbe 
+    
+ifeq ($(FOX_VARIANT),FBEv2)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.crypto.allow_encrypt_override=true \
+	ro.crypto.dm_default_key.options_format.version=2 \
+	ro.crypto.volume.filenames_mode=aes-256-cts \
+	ro.crypto.volume.metadata.method=dm-default-key
+endif
+
+

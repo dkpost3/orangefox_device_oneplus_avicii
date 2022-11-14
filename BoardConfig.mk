@@ -79,10 +79,6 @@ TARGET_BOARD_PLATFORM := $(TARGET_BOOTLOADER_BOARD_NAME)
 TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
 QCOM_BOARD_PLATFORMS += $(TARGET_BOARD_PLATFORM)
 
-# Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-
 # Partition Info
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_USES_PRODUCTIMAGE := true
@@ -94,9 +90,14 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
-# File System Tables for Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+# Partitions that should be wiped under recovery 
 TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery/root/system/etc/recovery.wipe
+# FBEv1 or FBEv2 ?
+ifeq ($(FOX_VARIANT),FBEv2)
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev2.fstab
+else
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev1.fstab
+endif
 
 # Dynamic/Logical Partitions
 BOARD_ONEPLUS_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor
@@ -135,6 +136,7 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 # Encryption
 BOARD_USES_METADATA_PARTITION := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
 PLATFORM_SECURITY_PATCH := 2127-12-31
 PLATFORM_VERSION := 99.87.36
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
@@ -148,8 +150,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_THEME := portrait_hdpi
-#TW_H_OFFSET := -103
-#TW_Y_OFFSET := 103
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone94/temp"
 TW_EXCLUDE_APEX := true
@@ -161,6 +161,7 @@ TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_HAS_EDL_MODE := true
 TW_INCLUDE_NTFS_3G := true
+TW_EXCLUDE_TWRPAPP := true
 TW_INCLUDE_RESETPROP := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_OVERRIDE_SYSTEM_PROPS := \
@@ -170,7 +171,7 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so
-
+    
 # TWRP Debug Flags
 TARGET_USES_LOGD := true
 TARGET_INCLUDE_LOGCAT := true

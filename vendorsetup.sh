@@ -34,6 +34,7 @@ fi
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
    	export TW_DEFAULT_LANGUAGE="en"
 	export LC_ALL="C"
+	export FOX_DEVICE="avicii"
 	export OF_AB_DEVICE_WITH_RECOVERY_PARTITION=1
  	export ALLOW_MISSING_DEPENDENCIES=true
 	export OF_AB_DEVICE=1
@@ -55,11 +56,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_TAR_BINARY=1
 	export FOX_USE_SED_BINARY=1
 	export FOX_USE_XZ_UTILS=1
-	export OF_DEVICE_WITHOUT_PERSIST=1
 	export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
     	export OF_QUICK_BACKUP_LIST="/boot;/data;"
 	export OF_PATCH_AVB20=1
-    	export FOX_DELETE_AROMAFM=0
+    	export FOX_DELETE_AROMAFM=1
     	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1546300800"; # Tuesday, January 1, 2019 12:00:00 AM GMT+00:00
     	export FOX_ENABLE_APP_MANAGER=0
     	export FOX_USE_NANO_EDITOR=1
@@ -82,6 +82,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	# R11.1 Settings
 	export FOX_VERSION="R11.1_1"
 	export OF_MAINTAINER="Sreeshankar K"
+	
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
   	   export | grep "FOX" >> $FOX_BUILD_LOG_FILE
