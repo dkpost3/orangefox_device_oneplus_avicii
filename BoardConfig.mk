@@ -79,6 +79,10 @@ TARGET_BOARD_PLATFORM := $(TARGET_BOOTLOADER_BOARD_NAME)
 TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
 QCOM_BOARD_PLATFORMS += $(TARGET_BOARD_PLATFORM)
 
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+
 # Partition Info
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_USES_PRODUCTIMAGE := true
@@ -92,6 +96,7 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
 # Partitions that should be wiped under recovery 
 TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery/root/system/etc/recovery.wipe
+
 # FBEv1 or FBEv2 ?
 ifeq ($(FOX_VARIANT),FBEv2)
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev2.fstab
