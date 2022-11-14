@@ -38,22 +38,6 @@ The phone is avialable in 2 variants based on region: AC2001 (India) & AC2003 (E
 | Sensors | Accelerometer, Electronic compass, Gyroscope, Ambient light sensor, Proximity sensor, Sensor Core |
 | Extras | Bluetooth 5.1 (support aptX & aptX HD & LDAC & AAC), NFC enabled |
 
-### To clone this repo
-
-1) Open terminal in the root directory of twrp source.
-
-2) Copy and paste the below command in terminal. (Use Ctrl+C to copy and Shift+Ctrl+V to paste in terminal)
-
-        git clone https://github.com/Sanju0910/ofrp_device_oneplus_avicii.git -b ofrp-12.1 device/oneplus/avicii
-
-### To build
-
-        source build/envsetup.sh
-        
-        lunch ofrp_avicii-eng
-        
-        mka adbd recoveryimage
-        
         
 ### Copyright
 
