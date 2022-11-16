@@ -24,7 +24,7 @@ PRODUCT_RELEASE_NAME := avicii
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := avicii
-PRODUCT_NAME := ofrp_avicii
+PRODUCT_NAME := orangefox_avicii
 PRODUCT_BRAND := OnePlus
 PRODUCT_MODEL := Nord
 PRODUCT_MANUFACTURER := oneplus
