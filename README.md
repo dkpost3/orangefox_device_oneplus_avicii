@@ -1,4 +1,4 @@
-# OFRP Device Tree for OnePlus Nord (avicii)
+# OnePlus Nord (avicii) Device Tree for OrangeFox Recovery Build
 
 <img src="https://github.com/Sanju0910/readme_res/blob/main/images/of_logo.png" width=100 height=100 align="left" />  
 
