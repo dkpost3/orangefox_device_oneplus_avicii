@@ -7,11 +7,11 @@
 
 LOCAL_PATH := device/oneplus/avicii
 
-# Enable project quotas and casefolding for emulated storage without sdcardfs
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
 # A/B support
 AB_OTA_UPDATER := true
+
+# fscrypt policy
+TW_USE_FSCRYPT_POLICY := 1
 
 # A/B updater updatable partitions list. Keep in sync with the partition list
 # with "_a" and "_b" variants in the device. Note that the vendor can add more
@@ -87,11 +87,14 @@ PRODUCT_PACKAGES += \
     
 ifeq ($(FOX_VARIANT),FBEv2)
 
+# fscrypt policy
+TW_USE_FSCRYPT_POLICY := 2
+
+# Properties
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.crypto.allow_encrypt_override=true \
 	ro.crypto.dm_default_key.options_format.version=2 \
 	ro.crypto.volume.filenames_mode=aes-256-cts \
-	ro.crypto.volume.metadata.method=dm-default-key
+	ro.crypto.volume.metadata.method=dm-default-key \
+	ro.crypto.volume.options=::v2
 endif
-
-
