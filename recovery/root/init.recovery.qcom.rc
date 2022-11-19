@@ -39,7 +39,6 @@ service boot-1-1 /system/bin/android.hardware.boot@1.1-service
     disabled
     seclabel u:r:recovery:s0
 
-    
 on init
     write /sys/class/backlight/panel0-backlight/brightness 200
     setprop sys.usb.configfs 1
