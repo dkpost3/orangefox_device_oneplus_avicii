@@ -85,6 +85,20 @@ PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe 
     
+# Recovery Modules
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libion \
+    libxml2 \
+    vendor.display.config@1.0 \
+    vendor.display.config@2.0
+        
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
+    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
+    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so
+    
+    
 ifeq ($(FOX_VARIANT),FBEv2)
 
 # fscrypt policy
@@ -97,4 +111,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.crypto.volume.filenames_mode=aes-256-cts \
 	ro.crypto.volume.metadata.method=dm-default-key \
 	ro.crypto.volume.options=::v2
+ 
 endif
