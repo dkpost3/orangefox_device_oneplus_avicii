@@ -27,6 +27,12 @@
 
 import /init.recovery.qcom_decrypt.rc
 
+service boot-1-0 /system/bin/android.hardware.boot@1.0-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
 service boot-1-1 /system/bin/android.hardware.boot@1.1-service
     user root
     group root
@@ -35,16 +41,13 @@ service boot-1-1 /system/bin/android.hardware.boot@1.1-service
 
 on init
     write /sys/class/backlight/panel0-backlight/brightness 200
-    setprop sys.usb.config mtp,adb
+    setprop sys.usb.configfs 1
     start boot-1-1
     start health-hal-2-1
-    
+
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
     write /sys/class/udc/${ro.boot.usbcontroller}/device/../mode peripheral
-    
-on early-fs
-    start vold
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
