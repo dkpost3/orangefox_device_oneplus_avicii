@@ -16,23 +16,29 @@
 # limitations under the License.
 #
 
+DEVICE_PATH := device/oneplus/avicii
+
 # Release name
 PRODUCT_RELEASE_NAME := avicii
-DEVICE_PATH := device/oneplus/avicii
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+
+
+# Inherit from avicii device
 $(call inherit-product, device/oneplus/avicii/device.mk)
+# Inherit some common TWRP stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := avicii
-PRODUCT_NAME := orangefox_avicii
+PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
+PRODUCT_NAME := orangefox_$(PRODUCT_DEVICE)
 PRODUCT_BRAND := OnePlus
 PRODUCT_MODEL := Nord
-PRODUCT_MANUFACTURER := OnePlus
+PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
 #
 
