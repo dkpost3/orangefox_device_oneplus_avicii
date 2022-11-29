@@ -6,7 +6,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/orangefox_avicii.mk
+    $(LOCAL_DIR)/twrp_avicii.mk
 
 COMMON_LUNCH_CHOICES := \
-    orangefox_avicii-eng
+    twrp_avicii-eng

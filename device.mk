@@ -50,12 +50,9 @@ PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.1-impl \
     android.hardware.boot@1.1-service \
-    android.hardware.boot@1.0-impl-wrapper.recovery \
     android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.0-impl-wrapper \
-    android.hardware.boot@1.0-impl.recovery \
     bootctrl.$(PRODUCT_PLATFORM).recovery \
     bootctrl.$(PRODUCT_PLATFORM)
     
@@ -72,8 +69,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # fastbootd
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.1-impl-mock \
-    android.hardware.fastboot@1.0-impl-mock.recovery \
+    android.hardware.fastboot@1.0-impl-mock \
     fastbootd
 
 # Soong namespaces
