@@ -57,7 +57,7 @@ on property:ro.boot.usbcontroller=*
    write /sys/class/udc/${ro.boot.usbcontroller}/device/../mode peripheral
 
 
-on property:ro.crypto.state=encrypted && property:ro.crypto.type=file && 
+on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     chmod 0777 /system/bin/wrappedkey-fix.sh
     start wrapped-key
     
