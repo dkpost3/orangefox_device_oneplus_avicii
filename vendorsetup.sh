@@ -97,6 +97,11 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_VERSION="R11.1_3"
 	export OF_MAINTAINER="Sreeshankar K"
 	
+	# disable wrappedkey?
+	if [ "$FOX_VARIANT" = "FBEv1_NOWRAP" ]; then
+	   export OF_DISABLE_WRAPPEDKEY=1
+	fi
+
 	if [ "$FOX_VARIANT" = "FBEv2" ]; then
 	   export OF_PATCH_AVB20=0
 	else

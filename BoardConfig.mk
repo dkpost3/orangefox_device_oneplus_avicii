@@ -110,11 +110,15 @@ TARGET_NO_RECOVERY := false
 # Partitions that should be wiped under recovery 
 TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery/root/system/etc/recovery.wipe
 
-# FBEv1 or FBEv2 ?
+# FBEv1 or FBEv1_NOWRAP or FBEv2 ?
 ifeq ($(FOX_VARIANT),FBEv2)
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev2.fstab
-else
+endif
+ifeq ($(FOX_VARIANT),FBEv1)
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev1.fstab
+endif
+ifeq ($(FOX_VARIANT),FBEv1_NOWRAP)
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev1_nowrap.fstab
 endif
 
 # Dynamic/Logical Partitions
