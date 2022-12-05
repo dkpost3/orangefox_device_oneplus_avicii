@@ -39,8 +39,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
  	export ALLOW_MISSING_DEPENDENCIES=true
 	export OF_AB_DEVICE=1
 	export TARGET_DEVICE_ALT="Nord,oneplusnord,OnePlusNord,OneplusNord,OnePlusnord,Oneplusnord,nord"
-	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+
+
 	export OF_USE_GREEN_LED=0
 	export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
 	export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
