@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2022 The Android Open Source Project
-# Copyright (C) 2022 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2022 TeamWin Recovery Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -110,15 +110,11 @@ TARGET_NO_RECOVERY := false
 # Partitions that should be wiped under recovery 
 TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery/root/system/etc/recovery.wipe
 
-# FBEv1 or FBEv1_NOWRAP or FBEv2 ?
+# FBEv1 or FBEv2 ?
 ifeq ($(FOX_VARIANT),FBEv2)
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev2.fstab
-endif
-ifeq ($(FOX_VARIANT),FBEv1)
+else
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev1.fstab
-endif
-ifeq ($(FOX_VARIANT),FBEv1_NOWRAP)
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev1_nowrap.fstab
 endif
 
 # Dynamic/Logical Partitions
@@ -142,7 +138,7 @@ BOARD_AVB_VBMETA_SYSTEM := system system_ext product
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 3
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 
@@ -166,7 +162,7 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone94/temp"
 TW_EXCLUDE_APEX := true
 TW_EXCLUDE_TWRPAPP := true
-TW_FRAMERATE := 90
+TW_FRAMERATE := 60
 TW_USE_TOOLBOX := true
 TW_DEFAULT_BRIGHTNESS := 200
 TW_EXCLUDE_DEFAULT_USB_INIT := true
@@ -187,4 +183,3 @@ TARGET_RECOVERY_DEVICE_MODULES += debuggerd
 RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
 TARGET_RECOVERY_DEVICE_MODULES += strace
 RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/strace
-

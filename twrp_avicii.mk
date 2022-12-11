@@ -1,7 +1,7 @@
 #
 # Copyright (C) 2019 The TwrpBuilder Open-Source Project
 #
-# Copyright (C) 2020-2022 OrangeFox Recovery Project
+# Copyright (C) 2014-2022 TeamWin Recovery Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ $(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 
 # Inherit from avicii device
@@ -38,7 +39,6 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
 PRODUCT_NAME := twrp_$(PRODUCT_DEVICE)
 PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := Nord
+PRODUCT_MODEL := OnePlus Nord
 PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
 #
-

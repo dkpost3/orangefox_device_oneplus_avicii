@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2022 The Android Open Source Project
-# Copyright (C) 2022 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2022 TeamWin Recovery Project 
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -12,6 +12,9 @@ AB_OTA_UPDATER := true
 
 # fscrypt policy
 TW_USE_FSCRYPT_POLICY := 1
+
+# Enable project quotas and casefolding for emulated storage without sdcardfs
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # A/B updater updatable partitions list. Keep in sync with the partition list
 # with "_a" and "_b" variants in the device. Note that the vendor can add more
@@ -58,7 +61,7 @@ PRODUCT_PACKAGES += \
     
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
-    
+        
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl.recovery

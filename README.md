@@ -1,14 +1,13 @@
-# OnePlus Nord (avicii) Device Tree for OrangeFox Recovery Build
+# OnePlus Nord (avicii) Device Tree for TeamWin Recovery Build
 
-
-<img src="https://github.com/Sanju0910/Sanju0910/blob/main/images/of_logo.png" width=100 height=100 align="left" />  
+<img src="https://github.com/Sanju0910/Sanju0910/blob/main/images/twrp_logo.png" width=100 height=100 align="left" />  
 
 
 <img src="https://github.com/Sanju0910/Sanju0910/blob/main/images/oneplus_logo.png" align="right"/>
 
 OnePlus Nord (codename:- avicii) is the first upper mid-range non-flagship smartphone from OnePlus Technology Co., Ltd. released in the year 2020.
 
-The phone is avialable in 2 variants based on region: AC2001 (India) & AC2003 (Europe)
+The phone is available in 2 variants based on region: AC2001 (India) & AC2003 (Europe)
 
 <p align="center">
 <img src="https://github.com/Sanju0910/Sanju0910/blob/main/images/oneplus_avicii.png" width=500 height=500 />
@@ -43,7 +42,7 @@ The phone is avialable in 2 variants based on region: AC2001 (India) & AC2003 (E
 ### Copyright
 
         
-        # Copyright (C) 2022 The OrangeFox Recovery Project
+        # Copyright (C) 2022 The TeamWin Recovery Project
         
         # Licensed under the Apache License, Version 2.0 (the "License");
         # you may not use this file except in compliance with the License.
