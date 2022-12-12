@@ -1,4 +1,4 @@
-# OnePlus Nord (avicii) Device Tree for TeamWin Recovery Build
+# OnePlus Nord (avicii) Device Tree for OrangeFox Recovery Build
 
 <img src="https://github.com/Sanju0910/Sanju0910/blob/main/images/of_logo.png" width=100 height=100 align="left" />  
 
