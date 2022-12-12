@@ -39,7 +39,7 @@ service boot-1-1 /system/bin/android.hardware.boot@1.1-service
     disabled
     seclabel u:r:recovery:s0
     
-service patchfakepartitions-service /sbin/patchfakepartitions-service.sh
+service patchfakepartitions-service /system/bin/patchfakepartitions-service.sh
     user root
     group root
     disabled
@@ -60,9 +60,10 @@ on init
     
 on boot
     start boot-1-1
+    start qti.vibrator-1-2
     start health-hal-2-1
     start patchfakepartitions-service
-    start qti.vibrator-1-2
+    
 
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
