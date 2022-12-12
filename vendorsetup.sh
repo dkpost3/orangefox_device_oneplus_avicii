@@ -15,6 +15,7 @@
 #
 
 FDEVICE="avicii"
+LOCAL_PATH=device/oneplus/avicii
 #set -o xtrace
 
 fox_get_target_device() {
@@ -38,7 +39,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_AB_DEVICE_WITH_RECOVERY_PARTITION=1
  	export ALLOW_MISSING_DEPENDENCIES=true
 	export OF_AB_DEVICE=1
-	export TARGET_DEVICE_ALT="Nord,oneplusnord,OnePlusNord,OneplusNord,OnePlusnord,Oneplusnord,nord"
+	export TARGET_DEVICE_ALT="Nord,oneplusnord,OnePlusNord,OneplusNord,OnePlusnord,Oneplusnord,nord,ossi"
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 	export OF_USE_GREEN_LED=0
@@ -54,11 +55,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_NO_MIUI_PATCH_WARNING=1
 	export FOX_USE_BASH_SHELL=1
 	export FOX_ASH_IS_BASH=1
-	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/recovery/fox/Magisk/Magisk-v25.2.zip
+	export FOX_USE_SPECIFIC_MAGISK_ZIP=$(LOCAL_PATH)/magisk/Magisk-v25.2.zip
 	export FOX_USE_TAR_BINARY=1
 	export FOX_USE_SED_BINARY=1
 	export FOX_USE_XZ_UTILS=1
-	export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
     	export OF_QUICK_BACKUP_LIST="/boot;/data;"
     	export FOX_DELETE_AROMAFM=1
     	export FOX_USE_BASH_SHELL=1

@@ -39,6 +39,13 @@ service boot-1-1 /system/bin/android.hardware.boot@1.1-service
     disabled
     seclabel u:r:recovery:s0
     
+service patchfakepartitions-service /sbin/patchfakepartitions-service.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+    
 service qti.vibrator-1-2 /system/bin/vendor.qti.hardware.vibrator@1.2-service
     user root
     group root
@@ -53,6 +60,8 @@ on init
     
 on boot
     start boot-1-1
+    start health-hal-2-1
+    start patchfakepartitions-service
     start qti.vibrator-1-2
 
 on property:ro.boot.usbcontroller=*
@@ -72,11 +81,3 @@ on fs
     symlink /dev/block/bootdevice/by-name/spunvm /dev/block/bootdevice/by-name/spunvm_b
     chown root system /dev/fscklogs/log
     chmod 0770 /dev/fscklogs/log
-
-    
-on property:twrp.modules.loaded=true
-    wait /sys/kernel/boot_adsp/boot
-    write /sys/kernel/boot_adsp/boot 1
-    wait /sys/class/power_supply/battery
-    start health-hal-2-1
-    setprop sys.usb.config mtp,adb

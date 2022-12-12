@@ -39,6 +39,6 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
 PRODUCT_NAME := twrp_$(PRODUCT_DEVICE)
 PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := OnePlus Nord
+PRODUCT_MODEL := Nord
 PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
 #
