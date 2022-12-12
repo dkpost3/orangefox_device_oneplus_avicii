@@ -29,7 +29,7 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := avicii,OnePlusNord,Nord
+TARGET_OTA_ASSERT_DEVICE := avicii,OnePlusNord,NordNord,ossi
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := $(PRODUCT_PLATFORM)
