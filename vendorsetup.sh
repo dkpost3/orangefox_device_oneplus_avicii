@@ -15,7 +15,6 @@
 #
 
 FDEVICE="avicii"
-LOCAL_PATH=device/oneplus/avicii
 #set -o xtrace
 
 fox_get_target_device() {
@@ -55,7 +54,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_NO_MIUI_PATCH_WARNING=1
 	export FOX_USE_BASH_SHELL=1
 	export FOX_ASH_IS_BASH=1
-	export FOX_USE_SPECIFIC_MAGISK_ZIP=$(LOCAL_PATH)/magisk/Magisk-v25.2.zip
+	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/recovery/fox/device/oneplus/avicii/magisk/Magisk-v25.2.zip
 	export FOX_USE_TAR_BINARY=1
 	export FOX_USE_SED_BINARY=1
 	export FOX_USE_XZ_UTILS=1
