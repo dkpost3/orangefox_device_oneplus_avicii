@@ -1,13 +1,13 @@
 #
 # Copyright (C) 2022 The Android Open Source Project
-# Copyright (C) 2022 TeamWin Recovery Project
+# Copyright (C) 2022 OrangeFox Recovery Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 DEVICE_PATH := device/oneplus/avicii
 
-# For building with minimal manifest
+# 12.1 manifest requirements 
 ALLOW_MISSING_DEPENDENCIES := true
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
@@ -29,7 +29,7 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := avicii,OnePlusNord,Nord,ossi
+TARGET_OTA_ASSERT_DEVICE := avicii,OnePlusNord,Nord,ossi,AC2001,AC2003
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := $(PRODUCT_PLATFORM)
@@ -182,6 +182,7 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_HAS_EDL_MODE := true
+TW_NO_USB_STORAGE := false
 TW_NO_SCREEN_BLANK := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INCLUDE_NTFS_3G := true
@@ -192,7 +193,7 @@ ifeq ($(FOX_VARIANT),FBEv1)
 TW_BACKUP_EXCLUSIONS := /data/nandswap
 endif
 TW_OVERRIDE_SYSTEM_PROPS := \
-"ro.build.date.utc;ro.bootimage.build.date.utc=ro.build.date.utc;ro.odm.build.date.utc=ro.build.date.utc;ro.product.build.date.utc=ro.build.date.utc;ro.system.build.date.utc=ro.build.date.utc;ro.system_ext.build.date.utc=ro.build.date.utc;ro.vendor.build.date.utc=ro.build.date.utc;ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
+"ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
 
 TW_RECOVERY_ADDITIONAL_RELINK_BINARY_FILES += \
     $(TARGET_OUT_EXECUTABLES)/ashmemd

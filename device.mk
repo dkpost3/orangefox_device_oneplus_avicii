@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2022 The Android Open Source Project
-# Copyright (C) 2022 TeamWin Recovery Project 
+# Copyright (C) 2022 OrangeFox Recovery Project 
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -12,12 +12,6 @@ AB_OTA_UPDATER := true
 
 # fscrypt policy
 TW_USE_FSCRYPT_POLICY := 1
-
-# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
-
-# Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # A/B updater updatable partitions list. Keep in sync with the partition list
 # with "_a" and "_b" variants in the device. Note that the vendor can add more
@@ -91,11 +85,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(OUT_DIR)/target/product/avicii/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so
 
-# OEM otacert
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(LOCAL_PATH)/security/local_OTA \
-    $(LOCAL_PATH)/security/pixelexperience \
-    $(LOCAL_PATH)/security/special_OTA  
+# tzdata
+PRODUCT_PACKAGES_ENG += \
+    tzdata_twrp
+
+# Userdata Checkpointing OTA GC
+PRODUCT_PACKAGES += \
+    checkpoint_gc
     
 ifeq ($(FOX_VARIANT),FBEv2)
 
