@@ -89,10 +89,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES_ENG += \
     tzdata_twrp
 
-# Userdata Checkpointing OTA GC
-PRODUCT_PACKAGES += \
-    checkpoint_gc
-    
+
 ifeq ($(FOX_VARIANT),FBEv2)
 
 # fscrypt policy
