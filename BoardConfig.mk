@@ -8,9 +8,11 @@
 DEVICE_PATH := device/oneplus/avicii
 
 # 12.1 manifest requirements 
-ALLOW_MISSING_DEPENDENCIES := true
+TARGET_SUPPORTS_64_BIT_APPS := true
+TARGET_USES_64_BIT_BINDER := true
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -130,9 +132,9 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery-fbev1.
 endif
 
 # Dynamic/Logical Partitions
-BOARD_ONEPLUS_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor
-BOARD_ONEPLUS_DYNAMIC_PARTITIONS_SIZE := 7511998464
-BOARD_SUPER_PARTITION_GROUPS := oneplus_dynamic_partitions
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 7511998464
+BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_SUPER_PARTITION_SIZE := 15032385536
 
 # Workaround for error copying vendor files to recovery ramdisk
@@ -191,9 +193,6 @@ TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_FASTBOOTD := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_SYSTEM_BUILD_PROP_ADDITIONAL_PATHS := build.prop
-ifeq ($(FOX_VARIANT),FBEv1)
-TW_BACKUP_EXCLUSIONS := /data/nandswap
-endif
 TW_OVERRIDE_SYSTEM_PROPS := \
 "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
 

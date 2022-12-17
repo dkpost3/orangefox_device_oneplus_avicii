@@ -13,6 +13,9 @@ AB_OTA_UPDATER := true
 # fscrypt policy
 TW_USE_FSCRYPT_POLICY := 1
 
+# GMS Client ID
+PRODUCT_GMS_CLIENTID_BASE := android-qualcomm
+
 # A/B updater updatable partitions list. Keep in sync with the partition list
 # with "_a" and "_b" variants in the device. Note that the vendor can add more
 # more partitions to this list for the bootloader and radio.
@@ -81,10 +84,6 @@ PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe 
 
-# Apex libraries    
-PRODUCT_COPY_FILES += \
-    $(OUT_DIR)/target/product/avicii/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libandroidicu.so
-
 # tzdata
 PRODUCT_PACKAGES_ENG += \
     tzdata_twrp
@@ -104,3 +103,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.crypto.volume.options=::v2
  
 endif
+
+# OEM otacert
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+    $(LOCAL_PATH)/security/local_OTA \
+    $(LOCAL_PATH)/security/pixelexperience
+# APEX libraries    
+PRODUCT_COPY_FILES += \
+    $(OUT_DIR)/target/product/$(PRODUCT_RELEASE_NAME)/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libcuuc.so
